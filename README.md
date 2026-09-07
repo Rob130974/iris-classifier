@@ -51,6 +51,10 @@ Using an 80/20 train/test split with `random_state=42`, the model achieved an ac
 
 The Decision Tree classifier achieved 100% accuracy on the test set.The model successfully classified all 30 test samples.## TestingAutomated tests are included in `tests/test_train.py` and can be run using `pytest`.
 
+## Testing
+
+Automated tests are included in `tests/test_train.py` and can be run using `pytest`.
+
 ## License
 
 This project includes a LICENSE file.
