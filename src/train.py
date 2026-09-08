@@ -1,7 +1,11 @@
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
+
+import joblib
+import os
+import matplotlib.pyplot as plt
 
 # Load the Iris dataset
 iris = load_iris()
@@ -18,9 +22,16 @@ model = DecisionTreeClassifier(random_state=42)
 
 # Train the model
 model.fit(X_train, y_train)
-
+# Save the trained model
+os.makedirs("outputs", exist_ok=True)
+joblib.dump(model, "outputs/model.joblib")
 # Make predictions
 predictions = model.predict(X_test)
+
+# Create and save confusion matrix
+ConfusionMatrixDisplay.from_predictions(y_test, predictions)
+plt.savefig("outputs/confusion_matrix.png")
+plt.close()
 
 # Check accuracy
 accuracy = accuracy_score(y_test, predictions)
